@@ -2,6 +2,12 @@
 
 All notable changes to the "ROS2 Colcon Build" extension will be documented in this file.
 
+## [1.1.1] - 2026-06-22
+
+### Fixed
+
+- Updated GitHub repository address to https://github.com/HappyChaoChao/vscode-ros2-colcon-build
+
 ## [1.1.0] - 2026-06-22
 
 ### Added
