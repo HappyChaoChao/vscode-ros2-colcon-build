@@ -1,0 +1,153 @@
+{
+  "name": "vscode-ros2-colcon-build",
+  "displayName": "ROS2 Colcon Build",
+  "description": "Visual colcon build interface for ROS2 developers",
+  "version": "1.1.0",
+  "publisher": "Happychao",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ros2.buildSelected",
+        "title": "ROS2: Build Selected Packages",
+        "icon": "$(play)"
+      },
+      {
+        "command": "ros2.buildCurrent",
+        "title": "ROS2: Build Current Package",
+        "icon": "$(play)"
+      },
+      {
+        "command": "ros2.buildAll",
+        "title": "ROS2: Build All Packages",
+        "icon": "$(run-all)"
+      },
+      {
+        "command": "ros2.buildWithDeps",
+        "title": "ROS2: Build Package with Dependencies",
+        "icon": "$(play)"
+      },
+      {
+        "command": "ros2.clean",
+        "title": "ROS2: Clean Build",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "ros2.cleanRebuild",
+        "title": "ROS2: Clean + Rebuild All",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "ros2.buildDocker",
+        "title": "ROS2: Build in Docker (ARM64)",
+        "icon": "$(play)"
+      },
+      {
+        "command": "ros2.showHistory",
+        "title": "ROS2: Show Build History",
+        "icon": "$(history)"
+      },
+      {
+        "command": "ros2.scanPackages",
+        "title": "ROS2: Scan Packages",
+        "icon": "$(search)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ros2-build",
+          "title": "ROS2 Build",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "ros2-build": [
+        {
+          "type": "webview",
+          "id": "ros2.buildSidebar",
+          "name": "Build"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "ROS2 Colcon Build",
+      "properties": {
+        "ros2-colcon-build.defaultBuildType": {
+          "type": "string",
+          "default": "Release",
+          "enum": [
+            "Release",
+            "Debug",
+            "RelWithDebInfo"
+          ],
+          "description": "Default CMake build type"
+        },
+        "ros2-colcon-build.defaultParallelWorkers": {
+          "type": "number",
+          "default": 4,
+          "minimum": 1,
+          "maximum": 16,
+          "description": "Default number of parallel build workers"
+        },
+        "ros2-colcon-build.defaultSymlinkInstall": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use symlink install by default"
+        },
+        "ros2-colcon-build.defaultContinueOnError": {
+          "type": "boolean",
+          "default": false,
+          "description": "Continue building other packages on failure"
+        },
+        "ros2-colcon-build.docker.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable Docker cross-compilation mode"
+        },
+        "ros2-colcon-build.docker.builderName": {
+          "type": "string",
+          "default": "arm64-builder",
+          "description": "Docker buildx builder name"
+        },
+        "ros2-colcon-build.docker.platform": {
+          "type": "string",
+          "default": "linux/arm64",
+          "description": "Docker target platform"
+        },
+        "ros2-colcon-build.colconArgs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Extra arguments passed to colcon build"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.1.0"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^4.2.0"
+  }
+}
