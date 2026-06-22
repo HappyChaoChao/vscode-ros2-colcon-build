@@ -57,12 +57,15 @@ The extension adds a "ROS2 Build" icon to the Activity Bar. Click it to open the
 |    [ ] Continue on Error                 |
 +------------------------------------------+
 |  Packages     [All][Git][Clear][Refresh] |
-|    ▼ amr_api (3)                         |
-|      [✓] robokit_api                     |
-|      [ ] robokit_supervisor              |
-|    ▼ amr_drivers (9)                     |
-|      [✓] amr_lidar_processing           |
-|      [ ] battery_detect                  |
+|    ▼ my_drivers (5)                      |
+|      [✓] motor_driver                   |
+|      [ ] sensor_driver                  |
+|    ▼ my_navigation (8)                   |
+|      [ ] path_planner                   |
+|      [ ] obstacle_avoidance             |
+|    ▼ my_perception (4)                   |
+|      [ ] camera_node                    |
+|      [ ] lidar_processor                |
 |    ---- Drag to resize ----              |
 +------------------------------------------+
 |  CPU: 45%  Workers: 4                    |
@@ -70,8 +73,35 @@ The extension adds a "ROS2 Build" icon to the Activity Bar. Click it to open the
 |  2/5 (40%)                               |
 |  [===========>                    ]       |
 +------------------------------------------+
-|  Status: Building: nav2_controller...    |
+|  Status: Building: path_planner...       |
 +------------------------------------------+
+```
+
+### Example Workflow
+
+```bash
+# 1. Open your ROS2 workspace
+cd /home/user/my_robot_ws
+code .
+
+# 2. Click the ROS2 Build icon in the Activity Bar
+
+# 3. Select packages to build
+#    - Click "All" to select all packages
+#    - Or click individual checkboxes
+#    - Use "Git" to auto-select packages with recent changes
+
+# 4. Configure build options
+#    - Build Type: Release (for production) or Debug (for debugging)
+#    - Parallel Workers: Auto-adjusted based on CPU/Memory
+
+# 5. Click "Build Selected" to start building
+
+# 6. Monitor progress
+#    - Progress bar shows current/total packages
+#    - CPU and memory usage displayed
+#    - Errors shown in Problems panel
+#    - Click errors to jump to source code
 ```
 
 ### Commands
