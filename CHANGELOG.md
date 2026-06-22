@@ -2,6 +2,12 @@
 
 All notable changes to the "ROS2 Colcon Build" extension will be documented in this file.
 
+## [1.1.2] - 2026-06-22
+
+### Changed
+
+- Updated README with generic package names (no project-specific names)
+
 ## [1.1.1] - 2026-06-22
 
 ### Fixed
